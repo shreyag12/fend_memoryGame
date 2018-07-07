@@ -1,10 +1,16 @@
 .page-header{
 
 	text-align: center;
-	background-color: grey;
+	background-color: black;
 	color: white;
 }
-
+.message{
+	display: none;
+	color: #18afd2;
+	font-family: Comic Sans;
+	font-size: 30px;
+	text-align: center;
+}
 .box{
 
     width: 70%;
@@ -22,6 +28,10 @@
   display: flex;
   flex-flow: row wrap;
   padding-left: 0px;
+  pointer-events: none;
+}
+.scene.active{
+  pointer-events: auto;
 }
 .card {
   width: 25%;
@@ -40,7 +50,7 @@
 }
 
 .card__face--front {
-  background-color: red;
+  background-color: #a9ff00;
 }
 
 .card__face--back {
@@ -62,12 +72,17 @@
 .matched{
 	background-color: #a9ff00;
 }
-.footer{
+#timing{
+  font-size: 24px;
+}
+footer{
 	position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: grey;
+    background-color: black;
     color: white;
     text-align: center;
 }
+
+
