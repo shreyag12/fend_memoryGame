@@ -65,7 +65,10 @@ $(document).ready(function(){
             }
             count++;
   				}
-          $('#moves').show();
+          if(len == 16)
+            $('#moves').hide();
+          else
+            $('#moves').show();
           $('#moves').html(moves + " moves");
           moves++;
   			}
@@ -81,7 +84,6 @@ function showGame(){
   $('#rateYo').show();
   $('#clock').show();
   $('#clock').html("00:00:00");
-  $('#moves').show();
   var parent = $(".scene");
     var divs = parent.children();
     while (divs.length) {
@@ -96,7 +98,6 @@ var timer;
 var moves;
 var count;
 var num;
-// var $rateYo = $("#rateYo").rateYo();
 function startClock(){
 $('.scene').addClass('active');
 timer = new Timer();
