@@ -57,12 +57,13 @@ $(document).ready(function(){
   					$(temp).removeClass('is-flipped');
             console.log(count);
             if(count >= 3){
-              num--;
-              if(num == 0)
-                $("#rateYo").rateYo("option", "rating", 1);
-              else
+             if(num <= 1)
+                $("#rateYo").rateYo("option", "rating", 1);           
+              else{
+                num--;
                 $("#rateYo").rateYo("option", "rating", num);
             }
+	   }
             count++;
   				}
           if(len == 16)
