@@ -23,8 +23,7 @@ $(document).ready(function(){
   		{
 
         var stars = $("#rateYo").rateYo("option", "rating");
-        $('#timing').html("<p>"+"hello"+"</p>");
-        $('#timing').html("With " + moves + " moves " + stars+ " stars"+" "+"Time taken " + timer.getTotalTimeValues().seconds + " seconds");
+        $('#timing').html("With " + moves + " moves " + stars+ " stars. "+" "+"Time taken " + timer.getTotalTimeValues().seconds + " seconds");
         timer.stop();
   			$('.box').hide();
         $('.start').hide();
@@ -32,6 +31,7 @@ $(document).ready(function(){
   			$('.message').show();
         $('#rateYo').hide();
         $('#clock').hide();
+        $('#moves').hide();
         $('.scene').removeClass('active');
 
   		}
@@ -49,20 +49,25 @@ $(document).ready(function(){
             console.log(temp);
   					$(temp).addClass('matched');
   					$(temp).effect("bounce",{times:2});
+            count = 0;
   				}
   				else{
   					$(temp).effect("shake");
   					$(temp).find("div").effect('highlight',{color: "red"}, 300);
   					$(temp).removeClass('is-flipped');
             console.log(count);
-            if(count >= 2){
+            if(count >= 3){
               num--;
-              $("#rateYo").rateYo("option", "rating", num);
+              if(num == 0)
+                $("#rateYo").rateYo("option", "rating", 1);
+              else
+                $("#rateYo").rateYo("option", "rating", num);
             }
             count++;
   				}
+          $('#moves').show();
+          $('#moves').html(moves + " moves");
           moves++;
-          // console.log(moves);
   			}
   	});
 
@@ -76,8 +81,12 @@ function showGame(){
   $('#rateYo').show();
   $('#clock').show();
   $('#clock').html("00:00:00");
-  // timer.reset();
-  // timer.stop();
+  $('#moves').show();
+  var parent = $(".scene");
+    var divs = parent.children();
+    while (divs.length) {
+        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+    }
   moves = 1;
   count = 0;
   num = 5;
@@ -97,10 +106,19 @@ timer.addEventListener('secondsUpdated', function (e) {
 });
 }
 
-// $('.start button').click(function(){
-//   var timer = new Timer();
-//   timer.start();
-//   timer.addEventListener('secondsUpdated', function (e) {
-//     $('#clock').html(timer.getTimeValues().toString());
-// });
-// });
+
+// reset star ratings , time and shuffle cards
+function resetGame() {
+    var parent = $(".scene");
+    var divs = parent.children();
+    while (divs.length) {
+        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+    }
+    $('.card').removeClass('matched is-flipped');
+     $("#rateYo").rateYo("option", "rating", 5);
+      timer.stop();
+     $('#clock').html("00:00:00");
+     $('#moves').hide();
+     moves = 1;
+     timer.reset();
+};

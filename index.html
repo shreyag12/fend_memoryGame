@@ -3,7 +3,7 @@
 <head>
 	<meta charset = "urf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
@@ -22,10 +22,8 @@
 			<div class = "col-sm-1">
 			<section class = "start">
 				<button type = "button" class = "btn btn-info" onclick="startClock();">Start</button>
+				<button type = "button" class = "btn btn-warning" onclick="resetGame();">Reset</button>
 			</section>
-	<!-- 		<section class = "stop">
-				<button type = "button" class = "btn btn-info">Stop</button>
-			</section> -->
 			</div>
 		<div class = "col-sm-10">
 		<section class = "message">
@@ -35,6 +33,7 @@
 			<button type ="button" class = "btn btn-dark" onclick = "showGame()">Play again</button>
 		</section>
 		<div id="rateYo"></div>
+		<div id ="moves"></div>
 		<div class = "box">
 		<ul class="scene">
   			<li class="card">
@@ -151,14 +150,6 @@
 	<script src="../node_modules/easytimer.js/dist/easytimer.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 	<script src = "js/rating.js"></script>
-<!-- <script>
-function startClock(){
-var timer = new Timer();
-timer.start();
-timer.addEventListener('secondsUpdated', function (e) {
-    $('#clock').html(timer.getTimeValues().toString());
-});
-}
-</script> -->
+
 	</body>
 </html>
